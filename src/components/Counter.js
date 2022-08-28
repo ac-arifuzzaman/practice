@@ -1,33 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
+import Button from "./Button";
+import Counte from "./Count";
 
-const Counter = () => {
-  const [count, setCount] = useState(0);
-
-  const incrementHandler = () => {
-    setCount((previous) => previous + 1);
-  };
-
-  const decrementHandler = () => {
-    setCount((previous) => previous - 1);
-  };
-
+const Counter = ({ id, count, incrementHandler, decrementHandler }) => {
   return (
     <div className="max-w-md mx-auto mt-10 space-y-5">
       <div className="p-4 h-auto flex flex-col items-center justify-center space-y-5 bg-white rounded shadow">
-        <div className="text-2xl font-semibold">{count}</div>
+        <Counte count={count}/>
         <div className="flex space-x-3">
-          <button
-            onClick={incrementHandler}
-            className="bg-indigo-400 text-white px-3 py-2 rounded shadow"
-          >
-            Increment
-          </button>
-          <button
-            onClick={decrementHandler}
-            className="bg-red-400 text-white px-3 py-2 rounded shadow"
-          >
-            Decrement
-          </button>
+          <Button handler={() =>incrementHandler(id)}>Increment</Button>
+          <Button handler={() =>decrementHandler(id)}>Decrement</Button>
+          
         </div>
       </div>
     </div>
